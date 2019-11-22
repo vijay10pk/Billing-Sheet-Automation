@@ -1,0 +1,14 @@
+thead {
+    background-color: #337AB7;
+    color: #ffffff;
+    text-align: center;
+}
+
+h2 {
+    color:#00afda;
+    text-align: center;
+}
+
+.card-body {
+    font-size: 11px;
+}

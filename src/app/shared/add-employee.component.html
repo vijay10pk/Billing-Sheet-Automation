@@ -1,0 +1,38 @@
+<div class='col-md-2'>
+  <button type="button" class="btn btn-outline-primary btn-md" data-toggle="modal" data-target="#addModal">Add</button>
+
+  <!-- Modal -->
+  <div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Employee</h4> 
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="newEmployees" (ngSubmit)="onSubmit()">
+                  <input type="text" class="form-control" formControlName="projectIdName" placeholder="Project-ID Name"><br>
+                  <input type="text" class="form-control" formControlName="employeeId" placeholder="ID"><br>
+                  <input type="text" class="form-control" formControlName="workId" placeholder="Workday ID"><br>
+                  <input type="text" class="form-control" formControlName="teamMember" placeholder="Team Member"><br>
+                  <input type="text" class="form-control" formControlName="comments" placeholder="Comments"><br>
+                  <input type="text" class="form-control" formControlName="location" placeholder="Location"><br>
+                  <input type="text" class="form-control" formControlName="stream" placeholder="Stream"><br>
+                  <input type="text" class="form-control" formControlName="project" placeholder="Project"><br>
+                  <input type="text" class="form-control" formControlName="cat" placeholder="Cat"><br>
+                  <input type="text" class="form-control" formControlName="workingDay" placeholder="Working Day"><br>
+                  <input type="text" class="form-control" formControlName="agreedSps" placeholder="Agreed SPs"><br>
+                   
+        <div class="modal-footer">
+          <button class="btn btn-success">Save</button> 
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>  
+      </div>
+  
+    </div>
+  </div>
+</div>
