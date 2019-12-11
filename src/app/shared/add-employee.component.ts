@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/Forms';
-import { CentricaDigitalMdsService } from '../centrica_digital_mds/centrica-digita-mds.service';
+import { CentricaDigitalMdsService } from './centrica-digita-mds.service';
 
 
 @Component ({

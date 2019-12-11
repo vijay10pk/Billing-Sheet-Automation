@@ -9,7 +9,10 @@
                     <input type='text' class="form-control-sm"
                     [(ngModel)]='listFilter'/>
                 </div>
-                <app-add></app-add> 
+                <app-add></app-add>
+                <div>
+                    <app-edit></app-edit>
+                </div> 
             </div>
             <div class='row'>
                 <div class='col-md-6'>
@@ -21,6 +24,7 @@
                     <div class='table'>
                         <thead>
                             <tr>
+                                <th><input type="checkbox" (change)="selectAll($event)" /></th>
                                 <th>Project-ID Name</th>
                                 <th>ID</th>
                                 <th>Workday ID</th>
@@ -41,26 +45,101 @@
                                 <th>Forcasted Revenue</th>
                             </tr>
                         </thead>
-                        <tbody *ngFor = 'let employee of filteredEmployees'>
-                            <tr>
-                                <td>{{employee.projectIdName}}</td>
-                                <td>{{employee.employeeId}}</td>
-                                <td>{{employee.workId}}</td>
-                                <td>{{employee.teamMember}}</td>
-                                <td>{{employee.comments}}</td>
-                                <td>{{employee.sow}}</td>
-                                <td>{{employee.location}}</td>
-                                <td>{{employee.stream}}</td>
-                                <td>{{employee.project}}</td>
-                                <td>{{employee.cat}}</td>
-                                <td>{{employee.leaves}}</td>
-                                <td>{{employee.workingDay}}</td>
-                                <td>{{employee.pdToSp}}</td>
-                                <td>{{employee.agreedSps}}</td>
-                                <td>{{employee.allocatedSps}}</td>
-                                <td>{{employee.actualSps}}</td>
-                                <td>{{employee.allocatedRevenue}}</td>
-                                <td>{{employee.forecastedRevenue}}</td>
+                        <tbody>
+                            <tr *ngFor = 'let employee of filteredEmployees'>
+                                <td>
+                                        <input type="checkbox" (change)="CentricaDigitalMdsService.selectedValue(employee,$event)" />
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'projectIdName',$event)" (blur)="updated(i,'projectIdName',$event)">
+                                        {{employee.projectIdName}} 
+                                    </span>
+                                    <!-- <input type="text" *ngIf="employee.editable" [(ngModel)]="employee.projectIdName" />
+                                    <ng-container *ngIf="!employee.editable">{{employee.productIdName}}</ng-container> -->
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'employeeId',$event)" (blur)="updated(i,'employeeId',$event)">
+                                        {{employee.id}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'workId',$event)" (blur)="updated(i,'workId',$event)">
+                                        {{employee.workId}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'teamMember',$event)" (blur)="updated(i,'teamMember',$event)">
+                                        {{employee.teamMember}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'comments',$event)" (blur)="updated(i,'comments',$event)">
+                                        {{employee.comments}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'sow',$event)" (blur)="updated(i,'sow',$event)">
+                                        {{employee.sow}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'location',$event)" (blur)="updated(i,'location',$event)">
+                                        {{employee.location}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'stream',$event)" (blur)="updated(i,'stream',$event)">{{employee.stream}}</span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'project',$event)" (blur)="updated(i,'project',$event)">
+                                        {{employee.project}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'cat',$event)" (blur)="updated(i,'cat',$event)">
+                                        {{employee.cat}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'leaves',$event)" (blur)="updated(i,'leaves',$event)">
+                                        {{employee.leaves}}.
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'workingDay',$event)" (blur)="updated(i,'workingDay',$event)">
+                                        {{employee.workingDay}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'pdToSp',$event)" (blur)="updated(i,'pdToSp',$event)">
+                                        {{employee.pdToSp}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'agreedSps',$event)" (blur)="updated(i,'agreedSps',$event)">
+                                        {{employee.agreedSps}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'allocatedSps',$event)" (blur)="updated(i,'allocatedSps',$event)">
+                                        {{employee.allocatedSps}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'actualSps',$event)" (blur)="updated(i,'actualSps',$event)">
+                                        {{employee.actualSps}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'allocatedSps',$event)" (blur)="updated(i,'allocatedRevenue',$event)">
+                                        {{employee.allocatedRevenue}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span contenteditable="true" (keyup)="changeValue(i,'forecastedRevenue',$event)" (blur)="updated(i,'forecastedRevenue',$event)">
+                                        {{employee.forecastedRevenue}}
+                                    </span>
+                                </td>
                             </tr>
                         </tbody>
                     </div>

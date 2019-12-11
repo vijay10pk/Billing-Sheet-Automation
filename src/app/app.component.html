@@ -1,9 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container-fluid">
-  <div class="row">
-        <h1>Centrica</h1>
-    </div>
-    <div>
-      <app-cdm-root></app-cdm-root>
+  <nav class='navbar navbar-expand navbar-light bg-light'>
+    <a class='navbar-brand'>{{pageTitle}}</a>
+    <ul class='nav nav-pills'>
+      <li><a class='nav-link' [routerLink]="['\welcome']">Home</a></li>
+      <li><a class='nav-link' [routerLink]="['\centrica_online_change']">Centrica Online Change</a></li>
+      <li><a class='nav-link' [routerLink]="['\centrica_digital_mds']">Centrica Digital MDS</a></li>
+      <li><a class='nav-link' [routerLink]="['\centrica_digital_mds_ukh_fe']">Centrica Digital MDS UKH FE</a></li>
+    </ul>
+  </nav>
+  
+  <div class= "container-fluid">
+    <router-outlet> </router-outlet>
   </div>
 </div>
